@@ -1,15 +1,6 @@
 import streamlit as st
 import os
 
-# Fungsi untuk memuat gambar dengan proporsi asli
-def load_image(image_file, caption):
-    if os.path.exists(image_file):
-        st.image(image_file, caption=caption, use_container_width=True)
-    else:
-        st.warning(f"Gambar tidak ditemukan: {image_file}")
-
-# Folder gambar
-image_folder = "images"
 
 # Homepage
 st.markdown(
@@ -68,27 +59,23 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+
 # Meal Categories
 st.markdown('<div class="section-title"><h2>Kategori Makanan Sesuai Umur</h2></div>', unsafe_allow_html=True)
 
-# Data Meal Categories
-categories = [
-    {"file": "kategori1.png", "caption": "6 - 8 Months\nIron, Protein, Healthy Fats"},
-    {"file": "kategori2.png", "caption": "9 - 11 Months\nCalcium, Vit D, Protein, Iron"},
-    {"file": "kategori3.png", "caption": "12 - 23 Months\nHealthy Fats, Iron, Vit D, Calcium"},
-    {"file": "kategori4.png", "caption": "24 - 60 Months\nCalcium, Vit D, Iron, Protein"}
-]
 
-# Tampilkan gambar Meal Categories tanpa mengubah ukuran
-col1, col2, col3, col4 = st.columns(4)
-for i, category in enumerate(categories):
-    image_path = os.path.join(image_folder, category["file"])
-    caption = category["caption"]
-    with [col1, col2, col3, col4][i]:
-        load_image(image_path, caption)
+# Fungsi untuk memuat gambar dengan proporsi asli
+def load_image(image_file, caption):
+    if os.path.exists(image_file):
+        st.image(image_file, caption=caption, use_column_width=True)
+    else:
+        st.warning(f"Gambar tidak ditemukan: {image_file}")
+
+# Folder gambar
+image_folder = "images"
 
 
-import streamlit as st
+
 
 # Fungsi navigasi
 def navigate(page):
